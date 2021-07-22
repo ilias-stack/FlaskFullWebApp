@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERREUR</title>
+    <link rel="shortcut icon" href="{{url_for('static',filename='images/favicon.ico')}}">
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        *{
+            font-family: Arial,Tahoma;
+            padding: -5px;
+            margin: 0px;
+        }
+        .main{
+            justify-content: center;
+            text-align: center;
+        }
+        .main p{
+            font-size: 40px;
+        }
+        
+         #TOPpage{
+    background-color: #505050;
+    padding: 10px;
+    border-top: 2px solid #db9b00;
+    border-bottom: 1px solid #373737;
+    display: flexbox;
+    height: auto;
+}
+.typed{
+    border-left: 1px solid #505050;
+    display: block;
+    float: left;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 16px;
+    background: #656565;
+    padding: 5px 8px 7px 8px;
+    font-family: "Roboto";
+    margin-top: 4px;
+}
+.ONE{
+    display: inline-flex;
+    cursor: pointer;
+    margin-left: 200px;
+    margin-right: 60px;
+}
+.Simg{
+    background: #656565;
+    padding: 5px 8px 7px 8px;
+}
+.TWO{
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.Simg2{
+    background: #656565;
+    padding: 7px 9px 9px 10px;
+}
+
+.nextTOP{
+    background-color: white;
+    display: flex;
+    max-height: 80px;
+}
+
+.nextTOP img{
+    padding: 20px;
+    margin-right: 300px;
+    margin-left: 220px;
+}
+.sites{
+    display: flex;
+    position: relative;
+}
+
+.els{
+    margin-right: 50px;
+    justify-content: center;
+    text-align: center;
+    height: 80px;
+    width: 80px;
+}
+.els img{
+    z-index: 500;
+}
+.MGS img{
+    margin: 0;
+    padding: 10px;
+}
+
+#selected{
+    box-shadow: 0 2px 0 0 #db9b00;
+    border-top: 2px #13a solid;
+    border-bottom: 2px #13a solid;
+}
+.els:hover{
+    box-shadow: 0 2px 0 0 #db9b00;
+    border-top: 2px #13a solid;
+    border-bottom: 2px #13a solid;
+}
+.el:hover{
+    opacity:  0.7;
+}
+    </style>
+</head>
+<body>
+    <div id="TOPpage">
+
+        <div class="ONE">
+        <div class="Simg">
+          <img src="{{url_for('static',filename='images/icons8-new-message-30.png')}}"   alt="">
+        </div>
+        <div class="typed"><b>contact@voieinfo.com</b></div></div>
+      
+        <div class="TWO">
+          <div class="Simg2">
+            <img src="{{url_for('static',filename='images/icons8-phone-24.png')}}"   alt="">
+          </div>
+          <div class="typed"><b>+212 522 35 35 36 /
+            03 </b></div></div>
+        </div>
+      
+        <div class="nextTOP">
+          <a href="/"><img src="{{url_for('static',filename='images/logo.png')}}" alt=""></a>
+      
+      
+          <div class="sites">
+            <div class="els">
+              <div class="MGS">
+                <a href="/login">
+              <img src="{{url_for('static',filename='images/icons8-home-24.png')}}" alt=""></a></div>
+              <p><strong>Log-in</strong></p>
+            </div>
+            <div class="els" >
+              <div class="MGS">
+                <a href="/choix">
+              <img src="{{url_for('static',filename='images/icons8-computer-24.png')}}" alt=""></a></div>
+              <p><strong>Articles</strong></p>
+            </div>
+            <div class="els">
+              <div class="MGS">
+                <a href="/Fournisseures">
+              <img src="{{url_for('static',filename='images/icons8-search-client-24.png')}}" alt=""></a></div>
+              <p><strong>Fournisseures</strong></p>
+            </div>
+            
+      
+      
+            
+          </div>
+           
+      
+        </div>
+    <div class="main">
+    <img src="{{url_for('static',filename='images/err404.png')}}" width="30%"  >
+    <p>Il semble que vous avez mal saisi un lien </p>
+</div><br>
+
+</body>
+</html>

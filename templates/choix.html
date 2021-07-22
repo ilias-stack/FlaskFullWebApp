@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+          font-family: Arial,Tahoma;
+        }
+    </style>
+    <title>Shop</title>
+    <link rel="shortcut icon" href="{{url_for('static',filename='images/television_tv_screen_monitor_icon_190854.ico')}}">
+    <link href="{{url_for('static',filename='styles/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/articles.css')}}">
+</head>
+<body>
+  <div id="TOPpage">
+
+  <div  class="ONE">
+  <div class="Simg">
+    <img src="{{url_for('static',filename='images/icons8-new-message-30.png')}}"   alt="">
+  </div>
+  <div class="typed"><b> <a href="mailto: contact@voieinfo.com">contact@voieinfo.com</a> </b></div></div>
+
+
+  <div class="TWO">
+    <div class="Simg2">
+      <img src="{{url_for('static',filename='images/icons8-phone-24.png')}}"   alt="">
+    </div>
+    <div class="typed"><b> <a href="tel:+212 522 35 35 36">+212 522 35 35 36 /03 </a> </b></div></div>
+
+  </div>
+
+  <div class="nextTOP">
+    <img src="{{url_for('static',filename='images/logo.png')}}" id="logo" alt="">
+
+
+    <div class="sites">
+      <div class="els">
+        <div class="MGS">
+          <a href="/login">
+        <img src="{{url_for('static',filename='images/icons8-home-24.png')}}" alt=""></a></div>
+        <p><strong>Log-in</strong></p>
+      </div>
+      <div class="els" id="selected">
+        <div class="MGS">
+          <a href="/choix">
+        <img src="{{url_for('static',filename='images/icons8-computer-24.png')}}" alt=""></a></div>
+        <p><strong>Articles</strong></p>
+      </div>
+      <div class="els" >
+          <div class="MGS" id="MGSii">
+            <a >
+          <img src="{{url_for('static',filename='images/icons8-admin-settings-male-24.png')}}" alt=""></a></div>
+          <p><strong>Admin <p class="downe" style="transform: rotate(90deg);position: absolute;z-index: -1;margin-left: 31px;margin-top: -5px;">►</p></strong></p>
+
+          <div id="drop">
+            <a href="/Fournisseures">distributor</a>
+            <a href="/problems">Reports</a>
+            <a href="/statistiques">Stats</a>
+          </div>
+        </div>
+      <div class="el" >
+          <div class="MGS">
+            <a href="/Logout">
+          <img src="../static/images/icons8-shutdown-24.png" style="width: 60px;height: 60px;opacity: 1;margin-left: 40px; " alt=""></a></div>
+        </div>
+
+      
+    </div>
+     
+
+  </div>
+      {% if Admin %}
+      <label for="fournises"></label>
+      <select style="margin-left: 40%;position: absolute;margin-top: 10px;" name="fournises" id="fournisseure">
+        <option value="All" style="height: 80px;">All</option>
+        <option value="{{User.email}}" style="height: 80px;">Me</option>
+        {% for i in fourns %}
+        <option value="{{i.email}}" style="height: 80px;"><strong>{{i.email}}</strong></option>
+        {% endfor %} 
+        
+      </select>
+      <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" id="refresh"  viewBox="0 0 30 30" width="30px" height="30px"><path d="M 15 3 C 12.031398 3 9.3028202 4.0834384 7.2070312 5.875 A 1.0001 1.0001 0 1 0 8.5058594 7.3945312 C 10.25407 5.9000929 12.516602 5 15 5 C 20.19656 5 24.450989 8.9379267 24.951172 14 L 22 14 L 26 20 L 30 14 L 26.949219 14 C 26.437925 7.8516588 21.277839 3 15 3 z M 4 10 L 0 16 L 3.0507812 16 C 3.562075 22.148341 8.7221607 27 15 27 C 17.968602 27 20.69718 25.916562 22.792969 24.125 A 1.0001 1.0001 0 1 0 21.494141 22.605469 C 19.74593 24.099907 17.483398 25 15 25 C 9.80344 25 5.5490109 21.062074 5.0488281 16 L 8 16 L 4 10 z"/></svg>
+      {% endif %}
+      <div id="scrollArts" style="background: url({{url_for('static',filename='images/_featured_bg.png')}});">
+        <div >
+          {% for i in items %}
+          {% if i.data %}
+          <div class="IMG" style="display: inline-block; margin: 20px;transition-duration: 0.5s;border-radius: 20px;">
+            <h2><span style="color: #373737;">{{i.nom}}:</span> <b>{{i.id}}</b></h2>
+            {% if Admin %}
+            <p style="color: #373737">" <b>{{i.owner.nom}}</b>:{{i.owner.email}}"</p>
+            {% endif %}
+            <img src="http://{{adrs}}:5122/images/{{i.id}}" style="opacity: 0.5;width: 100%;">
+          </div>
+          
+
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+{% if Admin %}
+<h1 style="text-align: center;">Tout les Articles</h1>
+{% else %}
+
+<h1 style="text-align: center;">Vos Articles</h1>
+
+{% endif %}
+      <main>
+        
+      <div style="margin: 15px;display: block;">
+      <input type="text" name="PROD" id="TOsearch" placeholder="valeur d'une propriete"><br>
+      <button id='search' style="margin-top: 10px;border-radius: 10px;border-style:groove;background-color:rgb(255, 255, 255);" >Rechercher</button>
+      </div>
+
+    </main>
+    <div id="artclInfo">
+      <table style="width: 100%;" >
+        <thead>
+        <tr style="background-color: peru;">
+        <th>Reference</th>  
+        <th>name</th>
+        <th>stockage</th>
+        <th>RAM</th>
+        <th>GPU</th>
+        <th>Prix</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in items %}
+          <tr>
+        <td>{{i.Reference}}</td>
+        <td>{{i.nom}}</td>
+        <td>{{i.stockage}}</td>
+        <td>{{i.ram}}</td>
+        <td>{{i.gpu}}</td>
+        <td>{{i.prix}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+
+      </table>
+
+    </div>
+    <h3 style="text-align: center;"><a href="/articles">Supp & ajouter</a> / <a href="/change">Modifier</a></h3>
+
+  <hr>
+
+      <div id='infoArt' >
+        <h1>Informations Articles</h1>
+        <div style="margin: 30px;">
+        <input type="text" placeholder="Reference" style="margin-right:10px ;" id="REFer">
+
+
+        <label for="TVA">TVA</label>
+        <select name="TVA" id="TVA">
+          
+          <option value="20">20%</option>
+          <option value="14">14%</option>
+          <option value="10">10%</option>
+          <option value="7">7%</option>
+        </select><br>
+      </div>
+
+        <label for="REF" style="margin-left: 7px;">prix HT</label>
+        <input type="text" id="HT" placeholder="prix HT" readonly style="margin-bottom: 5px ;"><br>
+
+        <label for="REF">prix TTC</label>
+        <input type="text" id="TTC" placeholder="prix TTC" readonly><br>
+
+
+        
+      </div>
+      <hr>
+
+<button id="table" style="position: fixed; bottom: 0; left: 0;">Show table</button>
+      
+
+<div class="B-footer" style="background: url({{url_for('static',filename='images/footer_bg.png')}});" >
+  <div id="A-f" >
+    <div class="four">
+      <div style="font-size: small;color: white;width: 100%;height: 30px;background: linear-gradient(to bottom, #e7b535 0%, #e7b535 50%, #e4ac1a 50%, #e4ac1a 100%);margin-bottom: -12px;" > <p> A propos !</p></div>
+    <i class="arrow down"></i><br>
+    <img style="margin-left: -63px;margin-top: 14px;" src="{{url_for('static',filename='images/logo.png')}}" alt=""><br>
+    <p style="text-align: left;color: #e0e0e0;margin-top: 15px;font-size: smaller;">Le spécialiste de la gestion de point de vente et d'informatique mobile.
+    </p>
+
+  </div>
+    <div class="four">
+      <div style="font-size: small;color: white;width: 100%;height: 30px;background: linear-gradient(to bottom, #e7b535 0%, #e7b535 50%, #e4ac1a 50%, #e4ac1a 100%);margin-bottom: -12px;" > <p> Contacts</p></div>
+    <i class="arrow down"></i>
+        <div class="NOn" style="margin-top: 12px;margin-bottom: -20px;">
+          <img src="{{url_for('static',filename='images/email_icon.png')}}" alt="">
+          <p style="text-align: left;color: #CCCCCC;font-size: smaller;">support@voieinfo.com <br> sales@voieinfo.com</p>
+
+        </div>
+        <br>
+        <div class="NOn">
+          <img src="{{url_for('static',filename='images/phone_icon.png')}}" alt=""><br>
+          <p style="text-align: left;color: #CCCCCC;font-size: 12px;">(+212) 522 35 35 36/03 <br>(+212) 522 35 35 36/03</p>
+        </div>
+
+    </div>
+    <div class="four">
+      <div style="font-size: small;color: white;width: 100%;height: 30px;background: linear-gradient(to bottom, #e7b535 0%, #e7b535 50%, #e4ac1a 50%, #e4ac1a 100%);margin-bottom: -12px;" > <p> Adresses</p></div>
+    <i class="arrow down"></i>
+
+    <div class="NOn" style="margin-top: 12px;margin-bottom: -20px;">
+      <img src="{{url_for('static',filename='images/address_icon.png')}}" alt="">
+      <p style="text-align: left;color: #CCCCCC;font-size: 12px;margin-top: -7px;">Route De Rabat (r.p. 1), Km 8,5 <br> Ain Sebaa Center Appt. N°26 Q. Beausite - Casablanca</p>
+
+    </div>
+    <br>
+    <div class="NOn">
+      <img src="{{url_for('static',filename='images/website_icon.png')}}" alt=""><br>
+      <p style="text-align: left;font-size: 12px;line-height: 21px;"><a style="text-decoration: none;color: #CCCCCC;" class="tHref" href="#">voieinfo.com</a> <br><a class="tHref" style="text-decoration: none;color: #CCCCCC;" href="http://pointec-maroc.com/">pointec-maroc.com/</a></p>
+    </div>
+    </div>
+    <div class="four">
+      <div style="font-size: small;color: white;width: 100%;height: 30px;background: linear-gradient(to bottom, #e7b535 0%, #e7b535 50%, #e4ac1a 50%, #e4ac1a 100%);margin-bottom: -7px;" > <p> Carte</p></div>
+    <i class="arrow down" style="margin-bottom: 10px;"></i>
+      <br>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.099529696644!2d-7.553863385410962!3d33.60272194873317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7ccf3d6689a59%3A0x69a90188250589ee!2sVoie%20Informatique%20(%20Voie%20Info%20)!5e0!3m2!1sfr!2sma!4v1625585122546!5m2!1sfr!2sma" width="100%" height="140" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+  
+</div>
+
+
+<footer>
+  <div>Copyright © <b>VOIEINFO</b> 2013 Tous les droit sont réservés</div>
+
+</footer>
+
+</body>
+<script src="{{url_for('static',filename='scripts/articles.js')}}"></script>
+</html>

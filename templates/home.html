@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="shortcut icon" href="{{url_for('static',filename='images/television_tv_screen_monitor_icon_190854.ico')}}">
+    <link href="{{url_for('static',filename='styles/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/home.css')}}">
+</head>
+<body>
+    <div id="TOPpage">
+
+        <div  class="ONE">
+        <div class="Simg">
+          <img src="{{url_for('static',filename='images/icons8-new-message-30.png')}}"   alt="">
+        </div>
+        <div class="typed"><b> <a href="mailto: contact@voieinfo.com">contact@voieinfo.com</a> </b></div></div>
+      
+      
+        <div class="TWO">
+          <div class="Simg2">
+            <img src="{{url_for('static',filename='images/icons8-phone-24.png')}}"   alt="">
+          </div>
+          <div class="typed"><b> <a href="tel:+212 522 35 35 36">+212 522 35 35 36 /03 </a> </b></div></div>
+      
+        </div>
+        <div id="navig" >
+            <a href="/"><img src="{{url_for('static',filename='images/logo.png')}}" alt=""></a>
+            <input type="text" placeholder="Rechercher" id="bar">
+<?xml version="1.0"?><svg  id="find" fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px">    <path d="M 9 2 C 5.1458514 2 2 5.1458514 2 9 C 2 12.854149 5.1458514 16 9 16 C 10.747998 16 12.345009 15.348024 13.574219 14.28125 L 14 14.707031 L 14 16 L 20 22 L 22 20 L 16 14 L 14.707031 14 L 14.28125 13.574219 C 15.348024 12.345009 16 10.747998 16 9 C 16 5.1458514 12.854149 2 9 2 z M 9 4 C 11.773268 4 14 6.2267316 14 9 C 14 11.773268 11.773268 14 9 14 C 6.2267316 14 4 11.773268 4 9 C 4 6.2267316 6.2267316 4 9 4 z"/></svg>
+          <a href="/login" style="margin-left: 5%;">Log-in ?</a>
+        </div>
+
+ <!--------------------------------------------------------------------------------------------->
+      <main style="min-height: 800px;" id="all">
+        {% for i in ARts %}
+
+        <div class="article" style="background: url({{url_for('static',filename='images/_featured_bg.png')}});">
+          <img class="pic" src="http://{{adrs}}:5122/images/{{i.id}}" style="opacity: 0.7;">
+          
+
+        <div class="Adetail">
+          <h3>{{i.prix}} DH</h3>
+          <p class="parag">{{i.nom}}</p>
+
+          <p class="det"><img src="{{url_for('static',filename='images/icons8-time-24.png')}}"   alt="">  {{i.A_time}}</p>
+
+        </div>
+        <div class="Fdetail">
+          <p style="margin-left: 16%;"> <a href="tel:{{i.owner.phone}}"><img src="{{url_for('static',filename='images/icons8-call-24.png')}}" alt=""></a>  </p>
+
+        </div>
+
+
+
+        </div>
+        {% endfor %}
+
+
+
+
+
+
+
+      </main>
+ <!--------------------------------------------------------------------------------------------->
+<div style="display: none;">
+ <a href='https://www.symptoma.fr/fr/info/covid-19#info' style='display:none'>Symptômes du coronavirus</a> <script type='text/javascript' {% if Admin %} src='https://www.freevisitorcounters.com/auth.php?id=a4e1946a8cd17c8d2d2415ee56dc72ee18d5c082' {% endif %}></script>
+<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/848384/t/4"></script>
+
+
+</div>
+      <div style="background:linear-gradient(rgba(255, 255, 255, 0),grey);height: 70px;width: 100%;text-align: center;">
+        <div >
+          
+        <img src="{{url_for('static',filename='images/icons8-system-report-24.png')}}"  alt="">
+        <a style="color: rgb(27, 45, 131);" href="/report">Report a problem</a></div>
+      </div>
+
+
+      <div class="B-footer" style="background: url({{url_for('static',filename='images/footer_bg.png')}});" >
+        <div id="A-f" >
+          <div class="four">
+            <div style="font-size: small;color: white;width: 100%;height: 30px;background: linear-gradient(to bottom, #e7b535 0%, #e7b535 50%, #e4ac1a 50%, #e4ac1a 100%);margin-bottom: -12px;" > <p> A propos !</p></div>
+          <i class="arrow down"></i><br>
+          <img style="margin-left: -63px;margin-top: 14px;" src="{{url_for('static',filename='images/logo.png')}}" alt=""><br>
+          <p style="text-align: left;color: #e0e0e0;margin-top: 15px;font-size: smaller;">Le spécialiste de la gestion de point de vente et d'informatique mobile.
+          </p>
+
+        </div>
+          <div class="four">
+            <div style="font-size: small;color: white;width: 100%;height: 30px;background: linear-gradient(to bottom, #e7b535 0%, #e7b535 50%, #e4ac1a 50%, #e4ac1a 100%);margin-bottom: -12px;" > <p> Contacts</p></div>
+          <i class="arrow down"></i>
+              <div class="NOn" style="margin-top: 12px;margin-bottom: -20px;">
+                <img src="{{url_for('static',filename='images/email_icon.png')}}" alt="">
+                <p style="text-align: left;color: #CCCCCC;font-size: smaller;">support@voieinfo.com <br> sales@voieinfo.com</p>
+
+              </div>
+              <br>
+              <div class="NOn">
+                <img src="{{url_for('static',filename='images/phone_icon.png')}}" alt=""><br>
+                <p style="text-align: left;color: #CCCCCC;font-size: 12px;">(+212) 522 35 35 36/03 <br>(+212) 522 35 35 36/03</p>
+              </div>
+
+          </div>
+          <div class="four">
+            <div style="font-size: small;color: white;width: 100%;height: 30px;background: linear-gradient(to bottom, #e7b535 0%, #e7b535 50%, #e4ac1a 50%, #e4ac1a 100%);margin-bottom: -12px;" > <p> Adresses</p></div>
+          <i class="arrow down"></i>
+
+          <div class="NOn" style="margin-top: 12px;margin-bottom: -20px;">
+            <img src="{{url_for('static',filename='images/address_icon.png')}}" alt="">
+            <p style="text-align: left;color: #CCCCCC;font-size: 12px;margin-top: -7px;">Route De Rabat (r.p. 1), Km 8,5 <br> Ain Sebaa Center Appt. N°26 Q. Beausite - Casablanca</p>
+
+          </div>
+          <br>
+          <div class="NOn">
+            <img src="{{url_for('static',filename='images/website_icon.png')}}" alt=""><br>
+            <p style="text-align: left;font-size: 12px;line-height: 21px;"><a style="text-decoration: none;color: #CCCCCC;" class="tHref" href="#">voieinfo.com</a> <br><a class="tHref" style="text-decoration: none;color: #CCCCCC;" href="http://pointec-maroc.com/">pointec-maroc.com/</a></p>
+          </div>
+          </div>
+          <div class="four">
+            <div style="font-size: small;color: white;width: 100%;height: 30px;background: linear-gradient(to bottom, #e7b535 0%, #e7b535 50%, #e4ac1a 50%, #e4ac1a 100%);margin-bottom: -7px;" > <p> Carte</p></div>
+          <i class="arrow down" style="margin-bottom: 10px;"></i>
+            <br>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.099529696644!2d-7.553863385410962!3d33.60272194873317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7ccf3d6689a59%3A0x69a90188250589ee!2sVoie%20Informatique%20(%20Voie%20Info%20)!5e0!3m2!1sfr!2sma!4v1625585122546!5m2!1sfr!2sma" width="100%" height="140" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+        
+      </div>
+
+
+      <footer>
+        <div>Copyright © <b>VOIEINFO</b> 2013 Tous les droit sont réservés</div>
+
+      </footer>
+
+       
+      
+
+</body>
+<script src="{{url_for('static',filename='scripts/home.js')}}"></script>
+
+</html>

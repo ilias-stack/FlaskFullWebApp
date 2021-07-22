@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="shortcut icon" href="{{url_for('static',filename='images/television_tv_screen_monitor_icon_190854.ico')}}">
+    <link href="{{url_for('static',filename='styles/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
+    <style>
+        *{
+          font-family: Arial,Tahoma;
+        }
+        body{
+      text-align: center;
+      justify-content: center;
+      height: 100%;
+      margin: 0;
+      background: #fff;;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+  }
+
+      form{
+          margin-top: 7%;
+      }
+      form div{
+        border: 1px solid black;
+      }
+      #TOPpage{
+    background-color: #505050;
+    padding: 10px;
+    border-top: 2px solid #db9b00;
+    border-bottom: 1px solid #373737;
+    display: flexbox;
+    height: auto;
+}
+.typed{
+    border-left: 1px solid #505050;
+    display: block;
+    float: left;
+    font-size: 16px;
+    background: #656565;
+    padding: 5px 8px 7px 8px;
+    font-family: "Roboto";
+    margin-top: 4px;
+}
+.typed a{
+    color: #e0e0e0;
+    text-decoration: none;
+}
+.ONE{
+    display: inline-flex;
+    cursor: pointer;
+    margin-left: -422px;
+    margin-right: 60px;
+}
+.Simg{
+    background: #656565;
+    padding: 5px 8px 7px 8px;
+}
+.TWO{
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.Simg2{
+    background: #656565;
+    padding: 7px 9px 9px 10px;
+}
+
+.nextTOP{
+    display: flex;
+    max-height: 80px;
+}
+
+.nextTOP img{
+    padding: 20px;
+    margin-right: 300px;
+    margin-left: 220px;
+}
+.sites{
+    display: flex;
+    position: relative;
+}
+
+.els{
+    margin-right: 50px;
+    justify-content: center;
+    text-align: center;
+    height: 80px;
+    width: 80px;
+}
+.els img{
+    z-index: 500;
+}
+.MGS img{
+    margin: 0;
+    padding: 10px;
+}
+
+#selected{
+    box-shadow: 0 2px 0 0 #db9b00;
+    border-top: 2px #13a solid;
+    border-bottom: 2px #13a solid;
+}
+.els:hover{
+    box-shadow: 0 2px 0 0 #db9b00;
+    border-top: 2px #13a solid;
+    border-bottom: 2px #13a solid;
+}
+.el:hover{
+    opacity:  0.7;
+}
+footer{
+  border-top: #db9b00 2px solid;
+  background-color: #616161;
+  position: unset;
+  bottom: 0px;
+  width: 100%;
+  height: 42px;
+  display: flexbox ;
+  justify-content: center;
+  text-align: center;
+
+  
+  }
+footer div{
+  color: #e0e0e0;
+  font-size: smaller;
+  margin-top: 10px;
+  margin-left: -40%;
+  position:unset;
+  font-family: HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.B-footer{
+  height: 285px;
+  width: 100%;
+}
+label,
+textarea {
+    font-size: .8rem;
+    letter-spacing: 1px;
+}
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+#A-f{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.four{
+  height: 200px;
+  width: 230px;
+  margin: 17px;
+  margin-top: 40px;
+}
+.four div{
+  display:-webkit-box;
+  
+}
+.four div p{
+  margin-left: 10px;
+  margin-top: 4px;  
+}
+.arrow {
+  border: solid #e4ac1a;
+  border-width: 0 6px 6px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: -200px;
+}
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.tHref:hover{
+  text-decoration: underline !important;
+}
+#logo{
+    cursor: pointer;
+}
+input[type=text]{
+    border-style: none;
+    margin: 5px;
+    background: rgba(255, 255, 255, 0.13);
+    width:fit-content;
+
+}
+#drop a{
+  padding: 5px;
+  display: block;
+  text-decoration:none;
+  color: white;
+  background: #13a;
+  width: 100%;
+}
+#drop a:hover{
+  background:#db9b00 ;
+}
+#drop{
+  display: none;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.7);
+  text-align: left;
+  z-index: 1;
+}
+#MGSii{
+  cursor: pointer;
+}
+#supp:hover{
+  background-color: red;
+  color: #CCCCCC;
+}
+label{
+  text-decoration: underline;
+}
+
+
+
+    </style>
+</head>
+<body>
+  
+  
+  <div id="TOPpage">
+
+    <div class="ONE">
+    <div class="Simg">
+      <img src="{{url_for('static',filename='images/icons8-new-message-30.png')}}"   alt="">
+    </div>
+    <div class="typed"><b> <a href="mailto: contact@voieinfo.com">contact@voieinfo.com</a> </b></div></div>
+  
+    <div class="TWO">
+      <div class="Simg2">
+        <img src="{{url_for('static',filename='images/icons8-phone-24.png')}}"   alt="">
+      </div>
+      <div class="typed"><b> <a href="tel:+212 522 35 35 36">+212 522 35 35 36 /03 </a> </b></div></div>
+    </div>
+  
+    <div class="nextTOP">
+      <img src="{{url_for('static',filename='images/logo.png')}}" id="logo" alt="">
+  
+  
+      <div class="sites">
+        <div class="els">
+          <div class="MGS">
+            <a href="/login">
+          <img src="{{url_for('static',filename='images/icons8-home-24.png')}}" alt=""></a></div>
+          <p><strong>Log-in</strong></p>
+        </div>
+        <div class="els">
+          <div class="MGS">
+            <a href="/choix">
+          <img src="{{url_for('static',filename='images/icons8-computer-24.png')}}" alt=""></a></div>
+          <p><strong>Articles</strong></p>
+        </div>
+        <div class="els" id="selected">
+            <div class="MGS" id="MGSii">
+              <a >
+            <img src="{{url_for('static',filename='images/icons8-admin-settings-male-24.png')}}" alt=""></a></div>
+            <p><strong>Admin <p class="downe" style="transform: rotate(90deg);position: absolute;z-index: -1;margin-left: 31px;margin-top: -5px;">►</p></strong></p>
+
+            <div id="drop">
+              <a href="/Fournisseures">distributor</a>
+              <a href="/problems">Reports</a>
+              <a href="/statistiques">Stats</a>
+            </div>
+          </div>
+        <div class="el" >
+            <div class="MGS">
+              <a href="/Logout">
+            <img src="../static/images/icons8-shutdown-24.png" style="width: 60px;height: 60px;opacity: 1;margin-left: 40px; " alt=""></a></div>
+          </div>
+  
+        
+      </div>
+       
+  
+    </div>
+<!------------------------------------------------------------------------------------------------------------------------>
+    
+    <main >
+        
+            {% for i in reports %}
+        <form method="POST" style="position: relative;margin-left: 5%;">
+            {% if not i.seen %}
+            <div style="background-color: rgba(153, 153, 153, 0.26);border-radius: 10px;text-align: left; width: 70%;" class="N-lu">
+                <input type="submit" id="supp" value="&times;" style="border-style: none;position: absolute;right: 30.3%;">
+                <input type="hidden" name="msgID" value="{{i.id}}">
+                <label for=""> <b>Name:</b> </label>
+                <input type="text" value="{{i.n_reporter}}" readonly><br>
+                <label for=""> <b>E-mail:</b> </label>
+                <input type="text" value="{{i.e_reporter}}" readonly><br>
+                <label for=""> <b>Message:</b> </label>
+                <textarea id="story"  style="resize: none;width: 95%;border-style: none;"  rows="5" cols="33"  readonly>{{i.message}}</textarea>
+                
+            
+            </div>
+            {% else %}
+            <div style="display: none;background-color: rgba(153, 153, 153, 0.26);border-radius: 10px;text-align: left; width: 70%;" class="N-lu">
+              <input type="submit" value="&times;" style="border-style: none;position: absolute;right: 30%;">
+              <input type="hidden" name="msgID" value="{{i.id}}">
+              <input type="text" value="{{i.n_reporter}}" readonly><br>
+              <input type="text" value="{{i.e_reporter}}" readonly><br>
+              <textarea id="story"  style="resize: none;width: 95%;border-style: none;"  rows="5" cols="33"  readonly>{{i.message}}</textarea>
+              
+          
+          </div>
+            
+            {% endif %}
+ 
+        </form>
+
+            {% endfor %}
+            
+
+
+
+
+
+
+
+    </main>
+     
+<!------------------------------------------------------------------------------------------------------------------------>
+      <div style="margin-bottom: 180px;"></div>
+
+      <div class="B-footer" style="background: url({{url_for('static',filename='images/footer_bg.png')}});" >
+        <div id="A-f" >
+          <div class="four">
+            <div style="font-size: small;color: white;width: 100%;height: 30px;background: linear-gradient(to bottom, #e7b535 0%, #e7b535 50%, #e4ac1a 50%, #e4ac1a 100%);margin-bottom: -12px;" > <p> A propos !</p></div>
+          <i class="arrow down"></i><br>
+          <img style="margin-left: -63px;margin-top: 14px;" src="{{url_for('static',filename='images/logo.png')}}" alt=""><br>
+          <p style="text-align: left;color: #e0e0e0;margin-top: 15px;font-size: smaller;">Le spécialiste de la gestion de point de vente et d'informatique mobile.
+          </p>
+
+        </div>
+          <div class="four">
+            <div style="font-size: small;color: white;width: 100%;height: 30px;background: linear-gradient(to bottom, #e7b535 0%, #e7b535 50%, #e4ac1a 50%, #e4ac1a 100%);margin-bottom: -12px;" > <p> Contacts</p></div>
+          <i class="arrow down"></i>
+              <div class="NOn" style="margin-top: 12px;margin-bottom: -20px;">
+                <img src="{{url_for('static',filename='images/email_icon.png')}}" alt="">
+                <p style="text-align: left;color: #CCCCCC;font-size: smaller;">support@voieinfo.com <br> sales@voieinfo.com</p>
+
+              </div>
+              <br>
+              <div class="NOn">
+                <img src="{{url_for('static',filename='images/phone_icon.png')}}" alt=""><br>
+                <p style="text-align: left;color: #CCCCCC;font-size: 12px;">(+212) 522 35 35 36/03 <br>(+212) 522 35 35 36/03</p>
+              </div>
+
+          </div>
+          <div class="four">
+            <div style="font-size: small;color: white;width: 100%;height: 30px;background: linear-gradient(to bottom, #e7b535 0%, #e7b535 50%, #e4ac1a 50%, #e4ac1a 100%);margin-bottom: -12px;" > <p> Adresses</p></div>
+          <i class="arrow down"></i>
+
+          <div class="NOn" style="margin-top: 12px;margin-bottom: -20px;">
+            <img src="{{url_for('static',filename='images/address_icon.png')}}" alt="">
+            <p style="text-align: left;color: #CCCCCC;font-size: 12px;margin-top: -7px;">Route De Rabat (r.p. 1), Km 8,5 <br> Ain Sebaa Center Appt. N°26 Q. Beausite - Casablanca</p>
+
+          </div>
+          <br>
+          <div class="NOn">
+            <img src="{{url_for('static',filename='images/website_icon.png')}}" alt=""><br>
+            <p style="text-align: left;font-size: 12px;line-height: 21px;"><a style="text-decoration: none;color: #CCCCCC;" class="tHref" href="#">voieinfo.com</a> <br><a class="tHref" style="text-decoration: none;color: #CCCCCC;" href="http://pointec-maroc.com/">pointec-maroc.com/</a></p>
+          </div>
+          </div>
+          <div class="four">
+            <div style="font-size: small;color: white;width: 100%;height: 30px;background: linear-gradient(to bottom, #e7b535 0%, #e7b535 50%, #e4ac1a 50%, #e4ac1a 100%);margin-bottom: -7px;" > <p> Carte</p></div>
+          <i class="arrow down" style="margin-bottom: 10px;"></i>
+            <br>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.099529696644!2d-7.553863385410962!3d33.60272194873317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7ccf3d6689a59%3A0x69a90188250589ee!2sVoie%20Informatique%20(%20Voie%20Info%20)!5e0!3m2!1sfr!2sma!4v1625585122546!5m2!1sfr!2sma" width="100%" height="140" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+        
+      </div>
+
+
+      <footer>
+        <div>Copyright © <b>VOIEINFO</b> 2013 Tous les droit sont réservés</div>
+
+      </footer>
+
+</body>
+<script>
+document.getElementById('logo').addEventListener('click',()=>{
+    window.location.href = "/"
+})
+
+
+document.getElementById('MGSii').addEventListener('click',()=>{
+  if(document.getElementById('drop').style.display=='none'){
+    document.getElementById('drop').style.display='block'
+  }
+  else{
+    document.getElementById('drop').style.display='none'
+  }
+})
+
+
+
+
+
+</script>
+
+</html>
