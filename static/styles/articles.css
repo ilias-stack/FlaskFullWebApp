@@ -76,19 +76,15 @@ button:active:after {
 .IMG img{
     transition-property: all;
     transition-duration: 0.5s;
+    height:180px;
+    width:200px;
 }
 
 .IMG img:hover{
     opacity: 1 !important;
-    
-    height: 240px;
+    color: white;
 }
 
-.IMG:hover{
-    background-color: #373737;
-    color: #e0e0e0;
-    transform: rotate(360deg);
-}
 
 #TOPpage{
     background-color: #505050;
@@ -317,4 +313,13 @@ footer{
 }
 #MGSii{
   cursor: pointer;
+}
+.others{
+  text-decoration: none;
+  color: white;
+  border:1px black;
+  border-style: double;
+  border-radius: 6px;
+  margin: 30px;
+  background-color:#333 ;
 }

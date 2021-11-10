@@ -9,7 +9,7 @@
           font-family: Arial,Tahoma;
         }
     </style>
-    <title>Shop</title>
+    <title>Articles</title>
     <link rel="shortcut icon" href="{{url_for('static',filename='images/television_tv_screen_monitor_icon_190854.ico')}}">
     <link href="{{url_for('static',filename='styles/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{url_for('static',filename='styles/articles.css')}}">
@@ -41,7 +41,7 @@
         <div class="MGS">
           <a href="/login">
         <img src="{{url_for('static',filename='images/icons8-home-24.png')}}" alt=""></a></div>
-        <p><strong>Log-in</strong></p>
+        <p><strong>Profile</strong></p>
       </div>
       <div class="els" id="selected">
         <div class="MGS">
@@ -93,7 +93,7 @@
             {% if Admin %}
             <p style="color: #373737">" <b>{{i.owner.nom}}</b>:{{i.owner.email}}"</p>
             {% endif %}
-            <img src="http://{{adrs}}:5122/images/{{i.id}}" style="opacity: 0.5;width: 100%;">
+            <img src="http://{{adrs}}:5122/images/{{i.id}}" style="opacity: 0.5;">
           </div>
           
 
@@ -143,9 +143,10 @@
       </tbody>
 
       </table>
-
+      
     </div>
-    <h3 style="text-align: center;"><a href="/articles">Supp & ajouter</a> / <a href="/change">Modifier</a></h3>
+    <div style="margin: 50px;"></div>
+    <h3 style="text-align: center;"><a class="others" href="/articles">Supp & ajouter</a>  <a class="others" href="/change">Modifier</a></h3>
 
   <hr>
 

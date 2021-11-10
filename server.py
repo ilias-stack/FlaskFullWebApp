@@ -114,18 +114,6 @@ def E_sender(recever,MSaG):
     server.send_message(email)
 
 
-def before_TIME(H,M):
-    nw = datetime.now()
-    hrs = nw.hour;mins = nw.minute;secs = nw.second
-    zero = timedelta(seconds = secs+mins*60+hrs*3600)
-    st = nw - zero 
-    time2 = st + timedelta(seconds=H*3600+M*60)  
-    if  nw <= time2:
-        return True
-    return False
-
-
-
 def read_All():
     for i in Reports.query.all():
         i.seen=True
@@ -136,7 +124,6 @@ def read_All():
 @app.route('/images/<NOME>')
 def affich(NOME):
     toAFF=Article().query.filter_by(id=NOME).first()
-
     return Response(toAFF.data,mimetype=toAFF.typePIC)
 
 
@@ -158,26 +145,28 @@ def base():
     global msg
     global owner
     msg=''
-
-    if request.method=='POST':
-        mail=request.form.get('email')
-        password=request.form.get('mdp')
-        if findMail(mail)!=False:
-            if Fournisseure.query.all()[findMail(mail)].password==password and Fournisseure.query.all()[findMail(mail)].email==mail :
-                if Fournisseure.query.all()[findMail(mail)].admin==False:
-                    global num_Users
-                    num_Users=len(session)
-                    msg=''
-                    session.permanent=True
-                    session['user']=Fournisseure.query.filter_by(email=mail).first().email
-                    return redirect('/choix')
-
-                elif Fournisseure.query.all()[findMail(mail)].admin==True:
+    if 'user' not in session:
+        if request.method=='POST':
+            mail=request.form.get('email')
+            password=request.form.get('mdp')
+            if findMail(mail)!=False:
+                if Fournisseure.query.all()[findMail(mail)].password==password and Fournisseure.query.all()[findMail(mail)].email==mail :
+                    if Fournisseure.query.all()[findMail(mail)].admin==False:
+                        global num_Users
+                        num_Users=len(session)
+                        msg=''
+                        session.permanent=True
                         session['user']=Fournisseure.query.filter_by(email=mail).first().email
-                        return redirect('statistiques')
+                        return redirect('/profile')
 
-        else:
-            msg='Aucun compte avec ces cordonnées'
+                    elif Fournisseure.query.all()[findMail(mail)].admin==True:
+                            session['user']=Fournisseure.query.filter_by(email=mail).first().email
+                            return redirect('/profile')
+
+            else:
+                msg='Aucun compte avec ces cordonnées'
+    else:
+        return redirect('/profile')
 
     if 'user' in session:
         statu='Vous êtes connecté'
@@ -249,6 +238,18 @@ def articles():
         return redirect('/login')
     
 
+@app.route('/profile',methods=['GET','POST'])
+def profile():
+    if 'user' in session:
+        if request.method=='POST':
+            pwd=request.form.get('pwd')
+            Fournisseure.query.all()[findMail(session['user'])].password=pwd
+            db.session.commit()
+
+        return render_template('profile.html',User=Fournisseure.query.filter_by(email=session['user']).first(),Id=findMail(session['user']))
+    else:
+        return redirect('/login')
+
 
 
 @app.route('/report',methods=['GET','POST'])
@@ -266,43 +267,47 @@ def report():
 
 @app.route('/change',methods=['GET','POST'])
 def change():
-    if request.method=='POST' and  request.form.get('available')!='None':
-        to_Change=Article.query.filter_by(id=request.form.get('available')).first()
-        ref=request.form.get('REF')
-        nom=request.form.get('NOM')
-        ram=request.form.get('RAM')
-        gpu=request.form.get('GPU')
-        stock=request.form.get('stockage')
-        pric=request.form.get('Prix')
-        to_Change.nom=nom;to_Change.Reference=ref;to_Change.ram=ram;to_Change.gpu=gpu;to_Change.stockage=stock;to_Change.prix=pric
-        db.session.commit()
+    if 'user' in session :
+        if request.method=='POST' and  request.form.get('available')!='None':
+            to_Change=Article.query.filter_by(id=request.form.get('available')).first()
+            ref=request.form.get('REF')
+            nom=request.form.get('NOM')
+            ram=request.form.get('RAM')
+            gpu=request.form.get('GPU')
+            stock=request.form.get('stockage')
+            pric=request.form.get('Prix')
+            to_Change.nom=nom;to_Change.Reference=ref;to_Change.ram=ram;to_Change.gpu=gpu;to_Change.stockage=stock;to_Change.prix=pric
+            db.session.commit()
 
-    if Fournisseure.query.filter_by(email=session['user']).first().admin:
-        items=Article.query.all()
-        Admin=True
+        if Fournisseure.query.filter_by(email=session['user']).first().admin:
+            items=Article.query.all()
+            Admin=True
 
 
 
-    else :
-        items=Article.query.join(Fournisseure).filter(Fournisseure.email==session['user']).all()
-        Admin=False
-    return render_template('changer.html',adrs=ipik,items=items,Admin=Admin,User=Fournisseure.query.filter_by(email=session['user']).first(),fourns=Fournisseure.query.all()[3:])
-
+        else :
+            items=Article.query.join(Fournisseure).filter(Fournisseure.email==session['user']).all()
+            Admin=False
+        return render_template('changer.html',adrs=ipik,items=items,Admin=Admin,User=Fournisseure.query.filter_by(email=session['user']).first(),fourns=Fournisseure.query.all()[3:])
+    return redirect('/login')
 
 
 @app.route('/choix')
 def choice():
-    if Fournisseure.query.filter_by(email=session['user']).first().admin:
-        items=Article.query.all()
-        Admin=True
+    if 'user' in session:
+
+        if Fournisseure.query.filter_by(email=session['user']).first().admin:
+            items=Article.query.all()
+            Admin=True
 
 
 
-    else :
-        items=Article.query.join(Fournisseure).filter(Fournisseure.email==session['user']).all()
-        Admin=False
-    return render_template('choix.html',items=items,adrs=ipik,User=Fournisseure.query.filter_by(email=session['user']).first(),Admin=Admin,fourns=Fournisseure.query.all()[3:])
+        else :
+            items=Article.query.join(Fournisseure).filter(Fournisseure.email==session['user']).all()
+            Admin=False
+        return render_template('choix.html',items=items,adrs=ipik,User=Fournisseure.query.filter_by(email=session['user']).first(),Admin=Admin,fourns=Fournisseure.query.all()[3:])
 
+    return redirect('/login')
 
 
 
@@ -392,7 +397,8 @@ def Logout():
 def erHandler(e):
     return render_template('error.html'),404
 
+
 if __name__=='__main__':
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True
-    app.run(debug=False,host='0.0.0.0',port=5122)
+    app.run(debug=True,host='0.0.0.0',port=5122)

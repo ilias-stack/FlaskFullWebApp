@@ -35,3 +35,9 @@ btnS.addEventListener('click',()=>{
   }
   all_ARTS.innerHTML =choosenArt
 });
+
+
+
+document.addEventListener('contextmenu',(e)=>{
+  e.preventDefault();
+})
